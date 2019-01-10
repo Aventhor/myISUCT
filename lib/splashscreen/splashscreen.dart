@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     padding: EdgeInsets.only(top: 20.0),
                     ),
                     Text(
-                      "Не мой ИГХТУ", style: TextStyle(
+                      "Мой ИГХТУ", style: TextStyle(
                         color: Colors.black,
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold
