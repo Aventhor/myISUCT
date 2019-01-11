@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:myisuct/splashscreen/splashscreen.dart';
-import 'package:myisuct/login/login.dart';
+import 'splashscreen/splashscreen.dart';
+import 'login/login.dart';
 
 class MyISUCTApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Мой ИГХТУ',
-      home: LoginPage(),
-      initialRoute: '/login',
+      home: new SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/login': (BuildContext context) => new LoginPage()
+      },
+      //initialRoute: '/login',
       onGenerateRoute: _getRoute,
       theme: _isuctTheme,
     );
