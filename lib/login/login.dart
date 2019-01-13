@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text('Войти'),
                   elevation: 6.0,
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed('/home');
                   },
                 )
               ],

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MaterialApp(
-  home: new Scaffold(
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
     appBar: new AppBar(
-      title: new Text("myISUCT"),
+      title: new Text("Мой ИГХТУ"),
       actions: <Widget>[
         new IconButton(
           icon: new Icon(Icons.contacts),
@@ -39,6 +41,8 @@ void main() => runApp(new MaterialApp(
         icon: new Icon(Icons.face),
         title: new Text("Профиль"),
       )
-    ]),
-  ),
-));
+    ]
+    ),
+  );
+}
+}

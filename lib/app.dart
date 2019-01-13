@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'splashscreen/splashscreen.dart';
 import 'login/login.dart';
+import 'home.dart';
 
 class MyISUCTApp extends StatelessWidget {
   @override
@@ -9,9 +10,9 @@ class MyISUCTApp extends StatelessWidget {
       title: 'Мой ИГХТУ',
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/login': (BuildContext context) => new LoginPage()
+        '/login': (BuildContext context) => new LoginPage(),
+        '/home': (BuildContext context) => new HomePage(),
       },
-      //initialRoute: '/login',
       onGenerateRoute: _getRoute,
       theme: _isuctTheme,
     );
