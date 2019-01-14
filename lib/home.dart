@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
 import 'card/card.dart';
+import 'schedule/schedule.dart';
+import 'profile/profile.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentTab = 0;
+
+  SchedulePage schedule;
+  MyCard news;
+  ProfilePage profile;
+  List<Widget> pages;
+  Widget currentPage;
+
+  @override
+  void initState() {
+    news = MyCard();
+    schedule = SchedulePage();
+    profile = ProfilePage();
+    pages = [news, schedule, profile];
+
+    currentPage = news;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white54,
       appBar: AppBar(
         title: Text("Мой ИГХТУ", style: TextStyle(color: Colors.white)),
         actions: <Widget>[
         ],
       ),
-      body: MyCard(),
+      body: currentPage,
       drawer: new Drawer(
         child: Column(
           children: <Widget>[
@@ -34,23 +60,32 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: new BottomNavigationBar(items: [
-        new BottomNavigationBarItem(
-          icon: new Icon(Icons.chat),
-          title: new Text("Новости"),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentTab,
+        fixedColor: Colors.redAccent,
+        onTap: (int index) {
+          setState(() {
+            currentTab = index;
+            currentPage = pages[index];
+          });
+        },
+        items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.chat),
+          title: Text("Новости"),
           
         ),
 
-        new BottomNavigationBarItem(
-          icon: new Icon(Icons.event),
-          title: new Text("Расписание"),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.event),
+          title: Text("Расписание"),
         ),
 
-        new BottomNavigationBarItem(
-          icon: new Icon(Icons.face),
-          title: new Text("Профиль"),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.face),
+          title: Text("Профиль"),
         )
-      ]
+      ],
       ),
     );
   }

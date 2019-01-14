@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'card_page.dart';
 
-class MyCard extends StatelessWidget {
+class MyCard extends StatefulWidget {
+  @override
+  _MyCardState createState() => _MyCardState();
+}
+
+class _MyCardState extends State<MyCard> {
   List cards = new List.generate(5, (i) => new CustomCard()).toList();
   @override
   Widget build(BuildContext context) {
