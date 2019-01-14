@@ -21,7 +21,11 @@ class CustomCard extends StatelessWidget {
       color: Colors.white70,
       child: new Card(
         child: new InkWell(
-          onTap: () {  MaterialPageRoute(builder: (context) => CardPage());},
+          onTap: () {  
+            Navigator.push(
+              context,MaterialPageRoute(builder: (context) => CardPage()),
+            );
+          },
         child: new Column(
           children: <Widget>[
             Padding(
