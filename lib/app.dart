@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'splashscreen/splashscreen.dart';
 import 'login/login.dart';
 import 'home.dart';
+import 'card/card_page.dart';
 
 class MyISUCTApp extends StatelessWidget {
   @override
@@ -12,6 +13,7 @@ class MyISUCTApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => new LoginPage(),
         '/home': (BuildContext context) => new HomePage(),
+        '/card_page': (BuildContext context) => new CardPage(),
       },
       onGenerateRoute: _getRoute,
       theme: _isuctTheme,
@@ -42,7 +44,6 @@ ThemeData _buildisuctTheme() {
       textTheme: ButtonTextTheme.normal,
     ),
     scaffoldBackgroundColor: Colors.white,
-    cardColor: Colors.white30,
     textSelectionColor: Colors.yellow,
     errorColor: Colors.red,
     textTheme: _buildisuctTextTheme(base.textTheme),
@@ -57,6 +58,9 @@ ThemeData _buildisuctTheme() {
 }
 TextTheme _buildisuctTextTheme(TextTheme base) {
   return base.copyWith(
+    display1: base.display1.copyWith(
+      fontSize: 18.0,
+    ),
     headline: base.headline.copyWith(
       fontWeight: FontWeight.w500,
     ),

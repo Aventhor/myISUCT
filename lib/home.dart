@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'card/card.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Мой ИГХТУ"),
+      backgroundColor: Colors.white54,
+      appBar: AppBar(
+        title: Text("Мой ИГХТУ", style: TextStyle(color: Colors.white)),
         actions: <Widget>[
-          new IconButton(
-            icon: new Icon(Icons.contacts),
-            onPressed: () {},
-          )
         ],
       ),
+      body: MyCard(),
       drawer: new Drawer(
         child: Column(
           children: <Widget>[
