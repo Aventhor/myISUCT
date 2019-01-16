@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'card/card.dart';
+import 'news/news.dart';
 import 'schedule/schedule.dart';
 import 'profile/profile.dart';
 
@@ -12,14 +12,14 @@ class _HomePageState extends State<HomePage> {
   int currentTab = 0;
 
   SchedulePage schedule;
-  MyCard news;
+  NewsPage news;
   ProfilePage profile;
   List<Widget> pages;
   Widget currentPage;
 
   @override
   void initState() {
-    news = MyCard();
+    news = NewsPage();
     schedule = SchedulePage();
     profile = ProfilePage();
     pages = [news, schedule, profile];
@@ -42,9 +42,27 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: const Text('Trevor Widget'),
-              accountEmail: const Text('trevor.widget@example.com'),
-              currentAccountPicture: const CircleAvatar(),
+              accountName: const Text(
+                'Egor Krasuhin',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w700,
+                ),
+              ),
+              accountEmail: const Text(
+                'krasuhin.number.one@isuct.ru',
+                style: TextStyle(
+                color: Colors.white70,
+                fontSize: 15.0,
+                fontWeight: FontWeight.w400,
+                ),
+              ),
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: 
+                  NetworkImage('https://www.isuct.ru/sites/default/files/department/ightu/ightu/16062017/isuct_logo_0.png'),
+              ),
             ),
             new ListTile(
               title: Text('Выйти'),

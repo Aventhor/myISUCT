@@ -36,16 +36,16 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("images/isuct_logo.png", width: 150.0, height: 150.0),
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.0),
+                    Image.asset("isuct_logo.png", width: 150.0, height: 150.0),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
                     ),
                     Text(
                       "Мой ИГХТУ", style: TextStyle(
                         color: Colors.black,
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold
-                        ),
+                      ),
                     )
                   ],
                 ),

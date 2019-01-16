@@ -42,7 +42,11 @@ ThemeData _buildisuctTheme() {
     buttonTheme: base.buttonTheme.copyWith(
       buttonColor: Colors.redAccent,
       textTheme: ButtonTextTheme.normal,
+      minWidth: 120.0,
+      height: 45.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
     ),
+    hintColor: Colors.grey[100],
     scaffoldBackgroundColor: Colors.white,
     textSelectionColor: Colors.yellow,
     errorColor: Colors.red,
@@ -51,11 +55,12 @@ ThemeData _buildisuctTheme() {
     accentTextTheme: _buildisuctTextTheme(base.accentTextTheme),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-      ),
+        borderRadius: BorderRadius.circular(20.0)),
+        filled: true,
     )
   );
 }
+
 TextTheme _buildisuctTextTheme(TextTheme base) {
   return base.copyWith(
     display1: base.display1.copyWith(
