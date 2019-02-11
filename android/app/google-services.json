@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "509897945455",
+    "firebase_url": "https://myisuct.firebaseio.com",
+    "project_id": "myisuct",
+    "storage_bucket": "myisuct.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509897945455:android:2d06dcdb8e9108b7",
+        "android_client_info": {
+          "package_name": "com.CrackedGoose.myisuct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509897945455-6tce0copkt5ltjccoi8drj4uf5bum6k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq067nxC-bp1Y90R37kYW2XhELgUYSYFo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'news/news.dart';
 import 'schedule/schedule.dart';
 import 'profile/profile.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage( {
+    Key key,
+    @required this.user
+  }) : super(key: key);
+  final FirebaseUser user;
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -51,8 +58,8 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.w700,
                 ),
               ),
-              accountEmail: const Text(
-                'krasuhin.number.one@isuct.ru',
+              accountEmail: Text(
+                '${widget.user.email}',
                 style: TextStyle(
                 color: Colors.white70,
                 fontSize: 15.0,
