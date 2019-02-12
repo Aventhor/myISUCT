@@ -15,20 +15,7 @@ class MyISUCTApp extends StatelessWidget {
         '/home': (BuildContext context) => new HomePage(),
         '/card_page': (BuildContext context) => new CardPage(),
       },
-      onGenerateRoute: _getRoute,
       theme: _isuctTheme,
-    );
-  }
-
-  Route<dynamic> _getRoute(RouteSettings settings) {
-    if(settings.name != '/login') {
-      return null;
-    }
-
-    return MaterialPageRoute<void>(
-      settings: settings,
-      builder: (BuildContext context) => LoginPage(),
-      fullscreenDialog: true,
     );
   }
 }
@@ -42,7 +29,7 @@ ThemeData _buildisuctTheme() {
     buttonTheme: base.buttonTheme.copyWith(
       buttonColor: Colors.redAccent,
       textTheme: ButtonTextTheme.normal,
-      minWidth: 120.0,
+      minWidth: 280.0,
       height: 45.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
     ),

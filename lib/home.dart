@@ -78,7 +78,11 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {},
                 ),
               onTap: () {
-              Navigator.of(context).pushNamed('/login');
+              FirebaseAuth.instance.signOut().then((value) {
+                    Navigator.of(context).pushReplacementNamed('/login');
+                  }).catchError((e) {
+                    print(e);
+                  });
               }
             ),
          ],

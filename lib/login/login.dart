@@ -15,20 +15,28 @@ class _LoginPageState extends State<LoginPage> {
 
   String _login;
   String _password;
+  bool _isLoading = false;
 
   Future<void> validateAndSubmit() async {
     final form = _formKey.currentState;
     if(form.validate()) {
       form.save();
+        setState(() {
+          _isLoading = true;
+        });
       print('Form is valid. Login: $_login, Password: $_password');
       try {
         FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _login, password: _password);
         //Navigator.of(context).pushNamed('/home');
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(user: user)));
+        Navigator.pop(context);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(user: user)));
       }
       catch(e)
        {
         print(e.message);
+        setState(() {
+          _isLoading = false;
+        });
       }
     }
     else 
@@ -37,24 +45,35 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Widget _showCircularProgress(){
+    if (_isLoading) {
+      return Center(child: CircularProgressIndicator());
+    } return Container(height: 0.0, width: 0.0,);
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
+      body: Container(
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+             image: NetworkImage('https://i.pinimg.com/originals/17/8e/39/178e39bfa4290fec229ea6e0e12899fb.jpg'),
+             fit: BoxFit.cover,
+          ),
+        ),
+        child: Form(
         key: _formKey,
-        child: ListView(
+        child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 70.0),
-            Column(
-              children: <Widget>[
-                Image.asset('isuct_logo.png', width: 120.0, height: 120.0),
-                SizedBox(height: 50.0),
-                Text('Вход', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w600))
-              ],
+            Padding(padding: EdgeInsets.all(50.0),
+            child:
+              Text('Вход', style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w600)),
             ),
-            SizedBox(height: 50.0),
             TextFormField(
               validator: (value) {
                 if(value.isEmpty)
@@ -64,6 +83,10 @@ class _LoginPageState extends State<LoginPage> {
               controller: _usernameController,
               style: TextStyle(fontSize: 15.0,color: Colors.black),
               decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(color: Colors.grey[600])
+                ),
                 prefixIcon: Icon(Icons.person),
                 hintText: 'Номер студенческого',
                 hintStyle: TextStyle(color: Colors.grey[600]),
@@ -85,20 +108,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
-            SizedBox(height: 20.0),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.only(top: 25.0),
+                child: RaisedButton(
                   child: Text('Войти', style: TextStyle(color: Colors.white)),
                   elevation: 6.0,
                   onPressed: validateAndSubmit,
                 )
-              ],
-            )
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 40.0),
+              child:
+            _showCircularProgress(),
+            ),
           ],
         ),
       )
+    ),
+    ),
     );
   }
 }
