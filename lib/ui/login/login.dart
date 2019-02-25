@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:myisuct/home.dart';
+import 'package:myisuct/ui/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         decoration: new BoxDecoration(
           image: new DecorationImage(
-             image: NetworkImage('https://i.pinimg.com/originals/17/8e/39/178e39bfa4290fec229ea6e0e12899fb.jpg'),
+             image: NetworkImage(''),
              fit: BoxFit.cover,
           ),
         ),

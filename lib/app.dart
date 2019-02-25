@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'splashscreen/splashscreen.dart';
-import 'login/login.dart';
-import 'home.dart';
-import 'card/card_page.dart';
+import 'ui/splashscreen/splashscreen.dart';
+import 'ui/login/login.dart';
+import 'ui/home.dart';
+import 'ui/news/post/detail_page.dart';
 
 class MyISUCTApp extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class MyISUCTApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => new LoginPage(),
         '/home': (BuildContext context) => new HomePage(),
-        '/card_page': (BuildContext context) => new CardPage(),
+        //'/card_page': (BuildContext context) => new DetailPage(),
       },
       theme: _isuctTheme,
     );
@@ -58,6 +58,10 @@ TextTheme _buildisuctTextTheme(TextTheme base) {
     ),
     title: base.title.copyWith(
       fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+    ),
+    subtitle: base.subtitle.copyWith(
+      fontSize: 16.0,
       fontWeight: FontWeight.bold,
     ),
     caption: base.caption.copyWith(

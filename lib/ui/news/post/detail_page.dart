@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:myisuct/model/news/post.dart';
 
-class CardPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
+
+  final Post post;
+
+  DetailPage(this.post);
+
   @override
   Widget build(BuildContext context) {
 
     Widget image = new Container(
       child:
-        Image.network('http://isuct.ru/sites/default/files/common/mainphoto1.jpg',
+        Image.network(post.imageLink,
         scale: 0.1,
         ),
         padding: EdgeInsets.only(bottom: 20.0),
@@ -34,7 +40,7 @@ class CardPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 20.0, top: 0, right: 20.0, bottom: 20.0),
       alignment: Alignment.centerLeft,
       child: Text(
-        'Новость дня',
+        post.title,
         style: Theme.of(context).textTheme.title,
       ),
     );
@@ -44,11 +50,7 @@ class CardPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT'),
-          Text('Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT'),
-          Text('Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT'),
-          Text('Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT'),
-          Text('Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT Random Text of ISUCT'),
+          Text(post.body),
         ],
       ),
     );
