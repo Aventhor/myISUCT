@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'ui/splashscreen/splashscreen.dart';
 import 'ui/login/login.dart';
 import 'ui/home.dart';
-import 'ui/news/post/detail_page.dart';
 
 class MyISUCTApp extends StatelessWidget {
   @override
@@ -13,7 +12,6 @@ class MyISUCTApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => new LoginPage(),
         '/home': (BuildContext context) => new HomePage(),
-        //'/card_page': (BuildContext context) => new DetailPage(),
       },
       theme: _isuctTheme,
     );

@@ -26,7 +26,8 @@ class DetailPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            '20.01.19',
+            post.date.toDate().toString().substring(0,16),
+            //'${post.date.toDate().day}:${post.date.toDate().month.}:${post.date.toDate().year}',
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.grey[600]
@@ -47,6 +48,7 @@ class DetailPage extends StatelessWidget {
 
     Widget middleSection = new Container(
       padding: EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
+      alignment: Alignment.centerLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
