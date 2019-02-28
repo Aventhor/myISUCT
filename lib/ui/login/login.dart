@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:myisuct/ui/home.dart';
+import 'package:myisuct/controller/login/login_control.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,47 +9,31 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  LoginControl lControl = LoginControl.instance;
+
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _formKey = new GlobalKey<FormState>();
-
-  String _login;
-  String _password;
   bool _isLoading = false;
 
-  Future<void> validateAndSubmit() async {
-    final form = _formKey.currentState;
-    if(form.validate()) {
-      form.save();
-        setState(() {
-          _isLoading = true;
-        });
-      print('Form is valid. Login: $_login, Password: $_password');
-      try {
-        FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _login, password: _password);
-        //Navigator.of(context).pushNamed('/home');
-        Navigator.pop(context);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(user: user)));
-      }
-      catch(e)
-       {
-        print(e.message);
-        setState(() {
-          _isLoading = false;
-        });
-      }
+  void checkData() async {
+    setState(() {
+      _isLoading = true;
+    });
+    bool isValid = await lControl.validateAndSubmit(_usernameController.text, _passwordController.text);
+    if(isValid) {
+      Navigator.pop(context);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
-    else 
-    {
-      print('Form is invalid.');
-    }
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   Widget _showCircularProgress(){
     if (_isLoading) {
       return Center(child: CircularProgressIndicator());
-    } return Container(height: 0.0, width: 0.0,);
-
+    }
+    return Container(height: 0.0, width: 0.0,);
   }
 
   @override
@@ -63,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: Form(
-        key: _formKey,
+        key: lControl.formKey,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
@@ -79,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(value.isEmpty)
                   return 'Поле не может быть пустым!';
               },
-              onSaved: (value) => _login = value, 
+              //onSaved: (value) => _login = value, 
               controller: _usernameController,
               style: TextStyle(fontSize: 15.0,color: Colors.black),
               decoration: InputDecoration(
@@ -99,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 if(value.length < 6)
                   return 'Номер слишком короткий!';
               },
-              onSaved: (value) => _password = value,
+              //onSaved: (value) => _password = value,
               style: TextStyle(fontSize: 15.0,color: Colors.black),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
@@ -115,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: RaisedButton(
                   child: Text('Войти', style: TextStyle(color: Colors.white)),
                   elevation: 6.0,
-                  onPressed: validateAndSubmit,
+                  onPressed: checkData,
                 )
               ),
             ),

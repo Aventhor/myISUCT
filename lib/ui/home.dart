@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:myisuct/controller/login/login_control.dart';
 import 'news/news.dart';
 import 'schedule/schedule.dart';
 import 'profile/profile.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage( {
-    Key key,
-    @required this.user
-  }) : super(key: key);
-  final FirebaseUser user;
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   int currentTab = 0;
+
+  LoginControl lControl = LoginControl.instance;
 
   SchedulePage schedule;
   NewsPage news;
@@ -30,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     schedule = SchedulePage();
     profile = ProfilePage();
     pages = [news, schedule, profile];
-
+    lControl.test();
     currentPage = news;
     super.initState();
   }
@@ -59,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               accountEmail: Text(
-                '${widget.user.email}',
+                '${lControl.user.email}',
                 style: TextStyle(
                 color: Colors.white70,
                 fontSize: 15.0,

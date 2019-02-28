@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:myisuct/controller/login/login_control.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -7,15 +7,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  LoginControl lControl = LoginControl.instance;
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () => navigationPage()
-    );
+    lControl.checkLogIn().then((u) {
+      if(u) {
+        navigationPage('/home');
+      }
+      else {
+        navigationPage('/login');
+      }
+    });
   }
 
-  void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/login');
+  void navigationPage(String page) {
+    Navigator.of(context).pushReplacementNamed(page);
   }
 
   @override
