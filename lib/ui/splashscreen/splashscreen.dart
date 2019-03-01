@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myisuct/controller/login/login_control.dart';
+import 'package:myisuct/controller/login/auth_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

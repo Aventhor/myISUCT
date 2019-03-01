@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'ui/splashscreen/splashscreen.dart';
-import 'package:myisuct/controller/login/login_control.dart';
 import 'ui/login/login.dart';
 import 'ui/home.dart';
 

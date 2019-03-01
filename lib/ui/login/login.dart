@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myisuct/ui/home.dart';
-import 'package:myisuct/controller/login/login_control.dart';
+import 'package:myisuct/controller/login/auth_manager.dart';
 
 class LoginPage extends StatefulWidget {
   @override

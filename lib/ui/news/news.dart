@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'post/post_summary.dart';
 import 'package:myisuct/model/news/post.dart';
-import 'package:myisuct/controller/news/news.dart';
+import 'package:myisuct/controller/data_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewsPage extends StatefulWidget {
@@ -14,9 +14,8 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
 
   List <Post> posts;
-  List <Post> reversedList; 
 
-  PostList pl = new PostList();
+  DataService pl = new DataService();
   StreamSubscription<QuerySnapshot> postSub;
 
 
@@ -24,15 +23,14 @@ class _NewsPageState extends State<NewsPage> {
     super.initState();
 
     posts = new List();
-    reversedList = new List();
 
-    postSub = pl.getPostList().listen((QuerySnapshot snapshot) {
+    postSub = pl.getPostList(database: 'news').listen((QuerySnapshot snapshot) {
       final List<Post> posts = snapshot.documents
           .map((documentSnapshot) => Post.fromMap(documentSnapshot.data))
           .toList(); 
       setState(() {
         this.posts = posts;
-        reversedList = posts.reversed.toList();
+        print(posts.toString());
       });
     });
   }
@@ -45,8 +43,9 @@ class _NewsPageState extends State<NewsPage> {
         children: <Widget>[
           Expanded(
             child: ListView.builder(
-               itemBuilder: (BuildContext context, int index) => new PostSummary(reversedList[index]),
-               itemCount: reversedList.length,
+               itemBuilder: (BuildContext context, int index) => new PostSummary(posts[index]),
+               itemCount: posts.length,
+               reverse: true,
             )
           ),
         ]

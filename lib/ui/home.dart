@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:myisuct/controller/login/login_control.dart';
+import 'package:myisuct/controller/login/auth_manager.dart';
 import 'news/news.dart';
 import 'schedule/schedule.dart';
 import 'profile/profile.dart';
@@ -46,8 +46,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: const Text(
-                'Egor Krasuhin',
+              accountName: Text(
+                //'${lControl.user.displayName}',
+                'null',
                 textAlign: TextAlign.right,
                 style: TextStyle(
                 color: Colors.white,
